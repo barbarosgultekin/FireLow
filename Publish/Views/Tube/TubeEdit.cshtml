@@ -1,0 +1,359 @@
+﻿
+@model  Tuple<List<CUSTOMER>, List<PRODUCT>>
+
+@{
+    ViewBag.Title = "TubeEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Tube/TubeSave" method="post">
+            <div class="form-body">
+                <h3 class="form-section col-md-10">Ürün Bilgileri</h3>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Ürün Cinsi</label>
+                    <div class="col-md-4">
+                        <select id="type" name="PTYPE" class="bs-select form-control input-circle" data-live-search="true">
+                            <option value="@Html.Raw(ViewBag.PTYPE)">@Html.Raw(ViewBag.PTYPE)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Ürün Sınıfı</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            @switch (ViewBag.PCLASS)
+                            {
+                                case "1":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1" checked /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "2":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" checked /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "3":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" checked /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "4":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" checked /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "5":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" checked /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "6":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" checked /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                                    </label>
+                                    break;
+                                case "7":
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="1"  /> İş Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="PCLASS" name="PCLASS" value="7" checked /> Diğer
+                                    </label>
+                                    break;
+                                default:
+                                    break;
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Ürün Seri No *</label>
+                    <div class="col-md-4">
+                        <input type="text" id="SERIAL" name="SERIAL" value="@Html.Raw(ViewBag.SERIAL)" class="form-control input-circle" placeholder="">
+                        <input type="hidden" id="ID" name="ID" value="@Html.Raw(ViewBag.REFID)" class="form-control" />
+                        <input type="hidden" id="FIRECLASS" name="FIRECLASS" value="@Html.Raw(ViewBag.FIRECLASS)" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Hacim Bilgisi</label>
+                    <div class="col-md-4">
+                        <input type="text" id="CAPACITY" name="CAPACITY" value="@Html.Raw(ViewBag.CAPACITY)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Detay Bilgisi</label>
+                    <div class="col-md-4">
+                        <input type="text" id="DETAIL" name="DETAIL" value="@Html.Raw(ViewBag.DETAIL)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Üretici Firma</label>
+                    <div class="col-md-4">
+                        <input type="text" id="MANUFACTURER" name="MANUFACTURER" value="@Html.Raw(ViewBag.MANUFACTURER)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">İçeriği</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TCONTENT" name="TCONTENT" value="@Html.Raw(ViewBag.TCONTENT)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Müşteri</label>
+                    <div class="col-md-4">
+                        <select id="TCUSTOMER" name="TCUSTOMER" class="bs-select form-control input-circle" data-live-search="true" data-size="8">
+                            <option value="@Html.Raw(ViewBag.TCUSTOMER)"> @Html.Raw(ViewBag.TCUSTOMER)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Ürün Yeri</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TAREA" name="TAREA" value="@Html.Raw(ViewBag.TAREA)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Konumu</label>
+                    <div class="col-md-4">
+                        <input type="text" id="LOCATION" name="LOCATION" value="@Html.Raw(ViewBag.LOCATION)" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">
+                        İlk Dolum/Bakım Tarihi *
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control form-control-inline input-medium date-picker input-circle" data-date-format="dd-mm-yyyy" id="FIRSTFILLING" name="FIRSTFILLING" size="16" type="text" value="@Html.Raw(ViewBag.FIRSTFILLING.ToString("dd-MM-yyyy"))" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Bakım Periyodu</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            @switch (ViewBag.TPERIOD)
+                            {
+                                case 1:
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="1" checked /> Aylık Bakım A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                    </label>
+                                    break;
+
+                                case 5:
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="1"  /> Aylık Bakım A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="5" checked /> 5 Yıllık Bakım 5Y-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                    </label>
+                                    break;
+                                case 3:
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="1"  /> Aylık Bakım A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="3" checked /> 6 Aylık Bakım 6A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                    </label>
+                                    break;
+                                case 4:
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="1"  /> Aylık Bakım A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="TPERIOD" name="TPERIOD" value="4" checked /> Yıllık Bakım Y-1
+                                    </label>
+                                    break;
+                                default:
+                                    break;
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="col-md-7 control-label">Durumu</label>
+                            <div class="col-md-5">
+                                <input type="checkbox" class="make-switch" id="TSTATUS" name="TSTATUS" value="OK" data-on-text="Aktif" data-off-text="Pasif" checked>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div style="padding-top:50px">
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" id="btn-1" class="btn btn-circle green">Kaydet</button>
+                            <a class="btn btn-circle" href="/Tube/TubeTable"> Vazgeç </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

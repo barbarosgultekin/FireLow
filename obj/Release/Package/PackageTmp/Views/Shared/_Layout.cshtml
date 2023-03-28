@@ -1,0 +1,428 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="utf-8">
+    <title>X Application</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <link href="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="../assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
+
+    <link href="../assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css">
+
+    <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color">
+    <link href="../assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../assets/pages/css/error.min.css" rel="stylesheet" type="text/css" />
+
+    @*<link rel="shortcut icon" href="~/assets/favicon.ico">*@
+    <link rel="shortcut icon" href="~/assets/favicon.png" type="image/x-icon">
+
+    <link href="../assets/pages/css/invoice-2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+
+    <div class="page-header navbar navbar-fixed-top">
+        <div class="page-header-inner ">
+
+            <div class="page-logo">
+                <a href="~/Home/Index">
+                    <div style="padding-left:0px">
+                        <img src="~/assets/layouts/layout/img/logo.jpg" alt="logo" class="invoice-logo-space" style="height:50px; width:200px" />
+                    </div>
+                </a>
+            </div>
+            <div style="padding-left:210px">
+                <form class="search-form " action="http://qdesing.tech/Searching/Search" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Issue Search..." name="jid">
+                        <span class="input-group-btn">
+                            <a href="javascript:;" class="btn submit">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> <span></span></a>
+        </div>
+
+        <div style="padding-right:20px" class="menu-toggler sidebar-toggler"><span></span></div>
+
+        @*<div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown dropdown-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="" class="img-circle" src="../assets/layouts/layout/img/avatar3_small.jpg" />
+                        <span class="username username-hide-on-mobile"> @HttpContext.Current.User.Identity.Name</span>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li>
+                                <a href="~//">
+                                    <i class="icon-user"></i> Profilim
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Home/Info">
+                                    <i class="icon-bag"></i> Nasıl yapılır ?
+                                </a>
+                            </li>
+                            <li>
+                                <a href="~/Home/Settings">
+                                    <i class="icon-settings"></i> Ayarlar
+                                </a>
+                            </li>
+                        <li>
+                            <a href="~/Home/Login">
+                                <i class="icon-logout"></i> Çıkış
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>*@
+    </div>
+
+    <div class="clearfix"> </div>
+
+    <div class="page-container">
+        <div class="page-sidebar-wrapper">
+            <div class="page-sidebar navbar-collapse collapse">
+                <ul class="page-sidebar-menu  page-header-fixed" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" data-height="612" data-initialized="1" style="overflow: hidden; width: auto; height: 612px;">
+                    <li class="sidebar-toggler-wrapper hide">
+                        <div class="sidebar-toggler">
+                            <span></span>
+                        </div>
+                    </li>
+
+                    <li class="heading">
+                        <h3 class="uppercase">Employee - @HttpContext.Current.User.Identity.Name</h3>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="~/Home/Index" class="nav-link ">
+                            <i class="icon-mouse"></i>
+                            <span class="title">
+                                <font face="helvetica" color="white">
+                                    Main Menu
+                                </font>
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-anchor"></i>
+                            <span class="title">Müşteri İşlemleri</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="~/Customer/CustomerTable" class="nav-link ">
+                                    <span class="title">
+                                        Müşteri Listesi
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="~/Customer/CustomerDefinition" class="nav-link ">
+                                    <span class="title">
+                                        Müşteri Kayıt
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-calculator"></i>
+                            <span class="title">Ürün İşlemleri</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="~/Tube/TubeTable" class="nav-link ">
+                                    <span class="title">
+                                        Ürün Listesi
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="~/Tube/TubeDefinition" class="nav-link ">
+                                    <span class="title">
+                                        Ürün Kayıt
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-info"></i>
+                            <span class="title">Dolum & Bakım İşlemleri</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="~/Chasing/ChasingTubeTable" class="nav-link ">
+                                    <span class="title">
+                                        Dolum Listesi
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="~/Chasing/ChasingPeriodicTable" class="nav-link ">
+                                    <span class="title">
+                                        Bakım Listesi
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="~/Reporting/ReportDate" class="nav-link ">
+                            <i class="icon-clock"></i>
+                            <span class="title">
+                                Raporlar
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="~/QR/QRTAG" class="nav-link ">
+                            <i class="icon-diamond"></i>
+                            <span class="title">
+                                QR Code Generate
+                            </span>
+                        </a>
+                    </li>
+
+                    @*<li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-notebook"></i>
+                                <span class="title">Raporlar</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="~/Reporting/FillDate" class="nav-link ">
+                                        <span class="title">
+                                            Raporlar
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+
+
+                    @*<li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-diamond"></i>
+                                <span class="title">QR Code</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="~/QR/QRTAG" class="nav-link ">
+                                        <span class="title">
+                                            QR Tag
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>*@
+
+
+                    <li class="heading">
+                        <h3 class="uppercase">@Html.Raw(System.DateTime.Now.ToShortDateString()) - @Html.Raw(System.DateTime.Now.Date.DayOfWeek)</h3>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-settings"></i>
+                            <span class="title">System</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item  ">                                                              
+                                <a href="~/Home/LogOut" class="nav-link ">
+                                    <i class="icon-logout"></i>
+                                    <span class="title">
+                                        System LogOut
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="page-content-wrapper">
+
+            @RenderBody()
+
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2021 ©
+            <a href="" title="" target="_blank"></a>
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
+
+
+    <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="~/assets/qrcode.js"></script>
+    @*<script type="text/javascript" src="~/assets/qrcode.min.js"></script>*@
+
+    <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <script src="../assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
+
+
+    <script src="../assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+
+    <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+
+    <script src="../assets/pages/scripts/dashboard.min.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/form-wizard.min.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+    <script src="../assets/pages/scripts/components-bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $.getJSON("../assets/il-bolge.json", function (sonuc) {
+            $.each(sonuc, function (index, value) {
+                var row = "";
+                row += '<option value="' + value.il + '">' + value.il + '</option>';
+                $("#il").append(row);
+            })
+        });
+
+        $("#il").on("change", function () {
+            var il = $(this).val();
+            $("#ilce").attr("disabled", false).html("<option value=''>Seçin..</option>");
+            $.getJSON("../assets/il-ilce.json", function (sonuc) {
+                $.each(sonuc, function (index, value) {
+                    var row = "";
+                    if (value.il == il) {
+                        row += '<option value="' + value.ilce + '">' + value.ilce + '</option>';
+                        $("#ilce").append(row);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $.getJSON("../assets/ptype.json", function (snc) {
+            $.each(snc, function (index, value) {
+                var row = "";
+                row += '<option value="' + value.type + '">' + value.type + '</option>';
+                $("#type").append(row);
+            })
+        });
+
+    </script>
+
+
+    <script type="text/javascript">
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            /* document.body.style.backgroundColor = "white";*/
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+    </script>
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        function makeCode() {
+            var elText = document.getElementById("qr");
+
+            //if (!elText.value) {
+            //    alert("Input a text");
+            //    elText.focus();
+            //    return;
+            //}
+
+            qrcode.makeCode(elText.value);
+        }
+
+        makeCode();
+
+        $("#qr").
+            on("blur", function () {
+                makeCode();
+            }).
+            on("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    makeCode();
+                }
+            });
+    </script>
+
+</body>
+</html>

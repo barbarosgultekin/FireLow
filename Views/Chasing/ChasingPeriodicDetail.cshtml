@@ -1,0 +1,280 @@
+﻿﻿@model IEnumerable<FireLow.CUSTOMER>
+@{
+
+    ViewBag.Title = "ChasingPeriodicDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding-left:5px">
+    <div class="page-content" style="min-height:1200px">
+        <div style="padding-top:40px">
+            <div class="portlet-body form">
+                <form class="form-horizontal" action="~/Chasing/ChasingPeriodicSave" method="post">
+
+                    <div class="col-md-pull-12">
+                        <h3 class="form-section col-md-12">@Html.Raw(ViewBag.APPELLATION) - @Html.Raw(ViewBag.ID) - @Html.Raw(ViewBag.PTYPE) </h3>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Servis Kabul</label>
+                                    <div class="col-md-3">
+                                        <input type="checkbox" class="make-switch" id="SSTATUS" name="SSTATUS" value="OK" data-on-text="Kabul" data-off-text="Red" checked>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Araç / Makine No</label>
+                                    <div class="col-md-7">
+                                        <div class="input-icon right">
+                                            <input type="text" id="VNU" name="VNU" class="form-control input-circle" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Seri No</label>
+                                    <div class="col-md-6">
+                                        <div class="input-icon right">
+                                            <input type="text" id="SNU" name="SNU" class="form-control input-circle" value="@Html.Raw(ViewBag.SERIAL)" placeholder="">
+                                            <input type="hidden" id="JID" name="JID" value="0" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Yapılan Eylemler</label>
+                                    <div class="col-md-7">
+                                        <div class="input-icon right">
+                                            <input type="text" id="ACTION" name="ACTION" class="form-control input-circle" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Bakım yeri</label>
+                                    <div class="col-md-6">
+                                        <div class="input-icon right">
+                                            <input type="text" id="WPLACE" name="WPLACE" class="form-control input-circle" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label col-md-5">
+                                        Servis / Kontrol Tarihi
+                                    </label>
+                                    <div class="col-md-3">
+                                        <input class="form-control form-control-inline input-medium date-picker input-circle" data-date-format="dd-mm-yyyy" id="WDATE" name="WDATE" size="16" type="text" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-md-5 control-label">Açıklamalar</label>
+                                    <div class="col-md-6">
+                                        <div class="input-icon right">
+                                            <input type="text" id="JDESC" name="JDESC" class="form-control input-circle" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h3 class="form-section col-md-12">Check List</h3>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Basınç OK</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="PRESSURE" name="PRESSURE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">İşlevsellik</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="FUNCTIONALITY" name="FUNCTIONALITY" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Hasar / Kaçak Kontrolü</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="DAMAGE" name="DAMAGE" class="form-control input-circle" value="OK" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Mühür / Etiket</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="SEAL" name="SEAL" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Sıfırlama</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="RESET" name="RESET" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Sinyal</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="SIGNAL" name="SIGNAL" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Selenoid Valf</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="SVALVE" name="SVALVE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Elektrik / Mekanik Delgi</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="EPUNCH" name="EPUNCH" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Koruma Kapağı</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="PROTECT" name="PROTECT" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Manometre Değişimi</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="MANOMETER" name="MANOMETER" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Membran değişimi</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="MEMBRANE" name="MEMBRANE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">İğne Değişimi</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="FNEEDLE" name="FNEEDLE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">Valf Kontrolü</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="VALVE" name="VALVE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Basınç Sensörü Kontrolü</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="PCONTROL" name="PCONTROL" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Basınç Sensörü Değişimi</label>
+                                <div class="col-md-2">
+                                    <div class="input-icon right">
+                                        <input type="checkbox" id="PCHANGE" name="PCHANGE" value="OK" class="form-control input-circle" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="padding-top:70px">
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <button type="submit" id="btn-2" class="btn green">Kaydet</button>
+                                        <a class="btn default" href="/Home/Index"> Vazgeç </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

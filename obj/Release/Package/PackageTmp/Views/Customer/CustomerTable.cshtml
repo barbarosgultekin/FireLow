@@ -1,0 +1,114 @@
+﻿@model IEnumerable<FireLow.CUSTOMER>
+@{
+    ViewBag.Title = "CustomerTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~//" method="post">
+            <div class="portlet light bordered">
+
+                <div class="portlet-title">
+
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+
+                        <span class="caption-subject bold uppercase">Müşteri Listesi</span>
+                    </div>
+
+                </div>
+
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-advance table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        <i class="fa fa-briefcase"></i> Firma / Müşteri
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-arrow-circle-down "></i> Durumu
+                                    </th>
+                                    @if (User.IsInRole("1"))
+                                    {
+
+                                        <th width="2">
+                                            <i class="fa fa-arrow-circle-down "></i> Düzenle
+                                        </th>
+                                    }
+                                    <th>
+                                        <i class="fa fa-briefcase"></i> Müşteri No
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-clipboard"></i> Adres
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-user"></i> Yetkili Kişi
+                                    </th>
+                                    @*<th>
+                                            <i class="fa fa-shopping-cart"></i> Sabit Telefon
+                                        </th>*@
+                                    <th>
+                                        <i class="fa fa-phone"></i> Telefon
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-mail-reply"></i> Mail Adresi
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td class="highlight">
+                                            <div class="success"></div>
+                                            <a href="~/Customer/CustomerDetail?id=@Html.DisplayFor(model =>item.REFID)">@Html.DisplayFor(model => item.APPELLATION)</a>
+                                        </td>
+
+                                        @*<td width="2" align="center" class="font-green-haze">Aktif</td>*@
+
+
+                                        @if (item.CSTATUS == 0)
+                                        {
+                                            <td width="2" align="center" class="font-red-haze">Pasif</td>
+                                        }
+                                        else
+                                        {
+                                            <td width="2" align="center" class="font-green-haze">Aktif</td>
+                                        }
+                                        @if (User.IsInRole("1"))
+                                        {
+
+                                            <td align="center">
+                                                <a href="~/Customer/CustomerEdit?id=@Html.DisplayFor(model => item.REFID)"><i class="btn btn-outline btn-circle btn-sm purple fa fa-edit"></i></a>
+                                            </td>
+                                        }
+                                        <td width="2" align="center">@Html.DisplayFor(model => item.REFID)</td>
+                                        <td>@Html.DisplayFor(model => item.CADRESS)</td>
+                                        <td>@Html.DisplayFor(mode => item.CNAME) </td>
+                                        <td width="8">@Html.DisplayFor(mode => item.CGSM) </td>
+                                        <td width="8">@Html.DisplayFor(mode => item.CMAIL) </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+
+</div>
+
+@*<td>
+     <a href="javascript:;" class="btn btn-outline btn-circle btn-sm purple">
+     <i class="fa fa-edit"></i> Düzenle
+     </a>
+    </td>*@

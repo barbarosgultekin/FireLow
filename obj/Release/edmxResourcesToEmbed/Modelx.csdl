@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FireLowDBModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHECKLIST">
+    <Key>
+      <PropertyRef Name="JID" />
+    </Key>
+    <Property Name="JID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <Property Name="PID" Type="Int32" Nullable="false" />
+    <Property Name="SSTATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VNU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SNU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="WPLACE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WDATE" Type="DateTime" Precision="0" />
+    <Property Name="JDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRESSURE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SEAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SVALVE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MANOMETER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VALVE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FUNCTIONALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RESET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EPUNCH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MEMBRANE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCHANGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCONTROL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DAMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SIGNAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PROTECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FNEEDLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="APPELLATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CTAXNO" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CTAXOFFICE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CGSM" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CPROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CDISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CADRESS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CAREA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CSTATUS" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CID" Type="Int32" />
+    <Property Name="TCUSTOMER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCLASS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TAREA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MANUFACTURER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIRSTFILLING" Type="DateTime" Precision="0" />
+    <Property Name="NEXTFILLING" Type="DateTime" Precision="0" />
+    <Property Name="DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TPERIOD" Type="Int32" />
+    <Property Name="INFO" Type="Int32" />
+    <Property Name="TSTATUS" Type="Int32" />
+    <Property Name="CARE" Type="Int32" />
+    <Property Name="FILL" Type="Int32" />
+    <Property Name="CAPACITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FILLDATE" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COMPANYID" Type="Int32" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="USERTYPE" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="FireLowDBEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHECKLISTs" EntityType="Self.CHECKLIST" />
+    <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+    <EntitySet Name="USERS" EntityType="Self.USER" />
+    <FunctionImport Name="sp_carereport" ReturnType="Collection(FireLowDBModel2.sp_carereport_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cmanoreport" ReturnType="Collection(FireLowDBModel2.sp_cmanoreport_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cmemreport" ReturnType="Collection(FireLowDBModel2.sp_cmemreport_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_cpressreport" ReturnType="Collection(FireLowDBModel2.sp_cpressreport_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_datediff" ReturnType="Collection(FireLowDBModel2.sp_datediff_Result)" />
+    <FunctionImport Name="sp_datemonth" ReturnType="Collection(FireLowDBModel2.sp_datemonth_Result)" />
+    <FunctionImport Name="sp_datenow" ReturnType="Collection(FireLowDBModel2.sp_datenow_Result)" />
+    <FunctionImport Name="sp_dateyear" ReturnType="Collection(FireLowDBModel2.sp_dateyear_Result)" />
+    <FunctionImport Name="sp_fillreport" ReturnType="Collection(FireLowDBModel2.sp_fillreport_Result)">
+      <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="todate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_carereport_Result">
+    <Property Type="Int32" Name="JID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="WDATE" Nullable="true" />
+    <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_cmanoreport_Result">
+    <Property Type="Int32" Name="JID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="WDATE" Nullable="true" />
+    <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_cmemreport_Result">
+    <Property Type="Int32" Name="JID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="WDATE" Nullable="true" />
+    <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_cpressreport_Result">
+    <Property Type="Int32" Name="JID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="false" />
+    <Property Type="Int32" Name="PID" Nullable="false" />
+    <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="WDATE" Nullable="true" />
+    <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_datediff_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="TARIH" Nullable="true" />
+    <Property Type="Int32" Name="COUNT" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_datemonth_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+    <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+    <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+    <Property Type="Int32" Name="INFO" Nullable="true" />
+    <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+    <Property Type="Int32" Name="CARE" Nullable="true" />
+    <Property Type="Int32" Name="FILL" Nullable="true" />
+    <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_datenow_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+    <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+    <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+    <Property Type="Int32" Name="INFO" Nullable="true" />
+    <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+    <Property Type="Int32" Name="CARE" Nullable="true" />
+    <Property Type="Int32" Name="FILL" Nullable="true" />
+    <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_dateyear_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+    <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+    <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+    <Property Type="Int32" Name="INFO" Nullable="true" />
+    <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+    <Property Type="Int32" Name="CARE" Nullable="true" />
+    <Property Type="Int32" Name="FILL" Nullable="true" />
+    <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_fillreport_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="CID" Nullable="true" />
+    <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+    <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+    <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+    <Property Type="Int32" Name="INFO" Nullable="true" />
+    <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+    <Property Type="Int32" Name="CARE" Nullable="true" />
+    <Property Type="Int32" Name="FILL" Nullable="true" />
+    <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+  </ComplexType>
+</Schema>

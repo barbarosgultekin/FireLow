@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FireLowDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHECKLIST">
+          <Key>
+            <PropertyRef Name="JID" />
+          </Key>
+          <Property Name="JID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="int" Nullable="false" />
+          <Property Name="PID" Type="int" Nullable="false" />
+          <Property Name="SSTATUS" Type="nvarchar" MaxLength="50" />
+          <Property Name="VNU" Type="nvarchar" MaxLength="50" />
+          <Property Name="SNU" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="WPLACE" Type="nvarchar" MaxLength="50" />
+          <Property Name="WDATE" Type="date" />
+          <Property Name="JDESC" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRESSURE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="SVALVE" Type="nvarchar" MaxLength="50" />
+          <Property Name="MANOMETER" Type="nvarchar" MaxLength="50" />
+          <Property Name="VALVE" Type="nvarchar" MaxLength="50" />
+          <Property Name="FUNCTIONALITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="RESET" Type="nvarchar" MaxLength="50" />
+          <Property Name="EPUNCH" Type="nvarchar" MaxLength="50" />
+          <Property Name="MEMBRANE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PCHANGE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PCONTROL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DAMAGE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SIGNAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PROTECT" Type="nvarchar" MaxLength="50" />
+          <Property Name="FNEEDLE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="REFID" />
+          </Key>
+          <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APPELLATION" Type="nvarchar" MaxLength="50" />
+          <Property Name="CNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CTAXNO" Type="nvarchar" MaxLength="11" />
+          <Property Name="CTAXOFFICE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CGSM" Type="nvarchar" MaxLength="11" />
+          <Property Name="CMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="CPROVINCE" Type="nvarchar" MaxLength="50" />
+          <Property Name="CDISTRICT" Type="nvarchar" MaxLength="50" />
+          <Property Name="CADRESS" Type="nvarchar" MaxLength="150" />
+          <Property Name="CAREA" Type="nvarchar" MaxLength="200" />
+          <Property Name="CSTATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="TCUSTOMER" Type="nvarchar" MaxLength="50" />
+          <Property Name="SERIAL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="PCLASS" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOCATION" Type="nvarchar" MaxLength="50" />
+          <Property Name="TAREA" Type="nvarchar" MaxLength="200" />
+          <Property Name="MANUFACTURER" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIRSTFILLING" Type="date" />
+          <Property Name="NEXTFILLING" Type="date" />
+          <Property Name="DETAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TCONTENT" Type="nvarchar" MaxLength="50" />
+          <Property Name="TPERIOD" Type="int" />
+          <Property Name="INFO" Type="int" />
+          <Property Name="TSTATUS" Type="int" />
+          <Property Name="CARE" Type="int" />
+          <Property Name="FILL" Type="int" />
+          <Property Name="CAPACITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="FILLDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="REFID" />
+          </Key>
+          <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMPANYID" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="USERTYPE" Type="int" />
+        </EntityType>
+        <Function Name="sp_carereport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="date" Mode="In" />
+          <Parameter Name="todate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_cmanoreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="date" Mode="In" />
+          <Parameter Name="todate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_cmemreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="date" Mode="In" />
+          <Parameter Name="todate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_cpressreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="date" Mode="In" />
+          <Parameter Name="todate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_datediff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_datemonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_datenow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_dateyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_fillreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="date" Mode="In" />
+          <Parameter Name="todate" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="FireLowDBModelStoreContainer">
+          <EntitySet Name="CHECKLIST" EntityType="Self.CHECKLIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FireLowDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHECKLIST">
+          <Key>
+            <PropertyRef Name="JID" />
+          </Key>
+          <Property Name="JID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="Int32" Nullable="false" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="SSTATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VNU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SNU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WPLACE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WDATE" Type="DateTime" Precision="0" />
+          <Property Name="JDESC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRESSURE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SVALVE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MANOMETER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VALVE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FUNCTIONALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RESET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EPUNCH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MEMBRANE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PCHANGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PCONTROL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DAMAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SIGNAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PROTECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FNEEDLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="REFID" />
+          </Key>
+          <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APPELLATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CTAXNO" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="CTAXOFFICE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CGSM" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="CMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CPROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CDISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CADRESS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CAREA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CSTATUS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="TCUSTOMER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PCLASS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TAREA" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MANUFACTURER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIRSTFILLING" Type="DateTime" Precision="0" />
+          <Property Name="NEXTFILLING" Type="DateTime" Precision="0" />
+          <Property Name="DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TCONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TPERIOD" Type="Int32" />
+          <Property Name="INFO" Type="Int32" />
+          <Property Name="TSTATUS" Type="Int32" />
+          <Property Name="CARE" Type="Int32" />
+          <Property Name="FILL" Type="Int32" />
+          <Property Name="CAPACITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FILLDATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="REFID" />
+          </Key>
+          <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMPANYID" Type="Int32" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="USERTYPE" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="FLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHECKLISTs" EntityType="Self.CHECKLIST" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <FunctionImport Name="sp_carereport" ReturnType="Collection(FireLowDBModel.sp_carereport_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_cmanoreport" ReturnType="Collection(FireLowDBModel.sp_cmanoreport_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_cmemreport" ReturnType="Collection(FireLowDBModel.sp_cmemreport_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_cpressreport" ReturnType="Collection(FireLowDBModel.sp_cpressreport_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_datediff" ReturnType="Collection(FireLowDBModel.sp_datediff_Result)" />
+          <FunctionImport Name="sp_datemonth" ReturnType="Collection(FireLowDBModel.sp_datemonth_Result)" />
+          <FunctionImport Name="sp_datenow" ReturnType="Collection(FireLowDBModel.sp_datenow_Result)" />
+          <FunctionImport Name="sp_dateyear" ReturnType="Collection(FireLowDBModel.sp_dateyear_Result)" />
+          <FunctionImport Name="sp_fillreport" ReturnType="Collection(FireLowDBModel.sp_fillreport_Result)">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_carereport_Result">
+          <Property Type="Int32" Name="JID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="WDATE" Nullable="true" />
+          <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_cmanoreport_Result">
+          <Property Type="Int32" Name="JID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="WDATE" Nullable="true" />
+          <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_cmemreport_Result">
+          <Property Type="Int32" Name="JID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="WDATE" Nullable="true" />
+          <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_cpressreport_Result">
+          <Property Type="Int32" Name="JID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="false" />
+          <Property Type="Int32" Name="PID" Nullable="false" />
+          <Property Type="String" Name="SSTATUS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SNU" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ACTION" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="WPLACE" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="WDATE" Nullable="true" />
+          <Property Type="String" Name="JDESC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PRESSURE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SEAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SVALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MANOMETER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="VALVE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FUNCTIONALITY" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RESET" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EPUNCH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MEMBRANE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCHANGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCONTROL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DAMAGE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SIGNAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PROTECT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FNEEDLE" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_datediff_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="TARIH" Nullable="true" />
+          <Property Type="Int32" Name="COUNT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_datemonth_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+          <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+          <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+          <Property Type="Int32" Name="INFO" Nullable="true" />
+          <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+          <Property Type="Int32" Name="CARE" Nullable="true" />
+          <Property Type="Int32" Name="FILL" Nullable="true" />
+          <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_datenow_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+          <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+          <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+          <Property Type="Int32" Name="INFO" Nullable="true" />
+          <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+          <Property Type="Int32" Name="CARE" Nullable="true" />
+          <Property Type="Int32" Name="FILL" Nullable="true" />
+          <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_dateyear_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+          <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+          <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+          <Property Type="Int32" Name="INFO" Nullable="true" />
+          <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+          <Property Type="Int32" Name="CARE" Nullable="true" />
+          <Property Type="Int32" Name="FILL" Nullable="true" />
+          <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_fillreport_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CID" Nullable="true" />
+          <Property Type="String" Name="TCUSTOMER" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SERIAL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PTYPE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PCLASS" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LOCATION" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TAREA" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MANUFACTURER" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FIRSTFILLING" Nullable="true" />
+          <Property Type="DateTime" Name="NEXTFILLING" Nullable="true" />
+          <Property Type="String" Name="DETAIL" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TCONTENT" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TPERIOD" Nullable="true" />
+          <Property Type="Int32" Name="INFO" Nullable="true" />
+          <Property Type="Int32" Name="TSTATUS" Nullable="true" />
+          <Property Type="Int32" Name="CARE" Nullable="true" />
+          <Property Type="Int32" Name="FILL" Nullable="true" />
+          <Property Type="String" Name="CAPACITY" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FILLDATE" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FireLowDBModelStoreContainer" CdmEntityContainer="FLEntities">
+          <EntitySetMapping Name="CHECKLISTs">
+            <EntityTypeMapping TypeName="FireLowDBModel.CHECKLIST">
+              <MappingFragment StoreEntitySet="CHECKLIST">
+                <ScalarProperty Name="JID" ColumnName="JID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SSTATUS" ColumnName="SSTATUS" />
+                <ScalarProperty Name="VNU" ColumnName="VNU" />
+                <ScalarProperty Name="SNU" ColumnName="SNU" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="WPLACE" ColumnName="WPLACE" />
+                <ScalarProperty Name="WDATE" ColumnName="WDATE" />
+                <ScalarProperty Name="JDESC" ColumnName="JDESC" />
+                <ScalarProperty Name="PRESSURE" ColumnName="PRESSURE" />
+                <ScalarProperty Name="SEAL" ColumnName="SEAL" />
+                <ScalarProperty Name="SVALVE" ColumnName="SVALVE" />
+                <ScalarProperty Name="MANOMETER" ColumnName="MANOMETER" />
+                <ScalarProperty Name="VALVE" ColumnName="VALVE" />
+                <ScalarProperty Name="FUNCTIONALITY" ColumnName="FUNCTIONALITY" />
+                <ScalarProperty Name="RESET" ColumnName="RESET" />
+                <ScalarProperty Name="EPUNCH" ColumnName="EPUNCH" />
+                <ScalarProperty Name="MEMBRANE" ColumnName="MEMBRANE" />
+                <ScalarProperty Name="PCHANGE" ColumnName="PCHANGE" />
+                <ScalarProperty Name="PCONTROL" ColumnName="PCONTROL" />
+                <ScalarProperty Name="DAMAGE" ColumnName="DAMAGE" />
+                <ScalarProperty Name="SIGNAL" ColumnName="SIGNAL" />
+                <ScalarProperty Name="PROTECT" ColumnName="PROTECT" />
+                <ScalarProperty Name="FNEEDLE" ColumnName="FNEEDLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="FireLowDBModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="REFID" ColumnName="REFID" />
+                <ScalarProperty Name="APPELLATION" ColumnName="APPELLATION" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="CTAXNO" ColumnName="CTAXNO" />
+                <ScalarProperty Name="CTAXOFFICE" ColumnName="CTAXOFFICE" />
+                <ScalarProperty Name="CGSM" ColumnName="CGSM" />
+                <ScalarProperty Name="CMAIL" ColumnName="CMAIL" />
+                <ScalarProperty Name="CPROVINCE" ColumnName="CPROVINCE" />
+                <ScalarProperty Name="CDISTRICT" ColumnName="CDISTRICT" />
+                <ScalarProperty Name="CADRESS" ColumnName="CADRESS" />
+                <ScalarProperty Name="CAREA" ColumnName="CAREA" />
+                <ScalarProperty Name="CSTATUS" ColumnName="CSTATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="FireLowDBModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TCUSTOMER" ColumnName="TCUSTOMER" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="PCLASS" ColumnName="PCLASS" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+                <ScalarProperty Name="NEXTFILLING" ColumnName="NEXTFILLING" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+                <ScalarProperty Name="TPERIOD" ColumnName="TPERIOD" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="TSTATUS" ColumnName="TSTATUS" />
+                <ScalarProperty Name="CARE" ColumnName="CARE" />
+                <ScalarProperty Name="FILL" ColumnName="FILL" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+                <ScalarProperty Name="FILLDATE" ColumnName="FILLDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="FireLowDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="REFID" ColumnName="REFID" />
+                <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USERTYPE" ColumnName="USERTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_carereport" FunctionName="FireLowDBModel.Store.sp_carereport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_carereport_Result">
+                <ScalarProperty Name="JID" ColumnName="JID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SSTATUS" ColumnName="SSTATUS" />
+                <ScalarProperty Name="VNU" ColumnName="VNU" />
+                <ScalarProperty Name="SNU" ColumnName="SNU" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="WPLACE" ColumnName="WPLACE" />
+                <ScalarProperty Name="WDATE" ColumnName="WDATE" />
+                <ScalarProperty Name="JDESC" ColumnName="JDESC" />
+                <ScalarProperty Name="PRESSURE" ColumnName="PRESSURE" />
+                <ScalarProperty Name="SEAL" ColumnName="SEAL" />
+                <ScalarProperty Name="SVALVE" ColumnName="SVALVE" />
+                <ScalarProperty Name="MANOMETER" ColumnName="MANOMETER" />
+                <ScalarProperty Name="VALVE" ColumnName="VALVE" />
+                <ScalarProperty Name="FUNCTIONALITY" ColumnName="FUNCTIONALITY" />
+                <ScalarProperty Name="RESET" ColumnName="RESET" />
+                <ScalarProperty Name="EPUNCH" ColumnName="EPUNCH" />
+                <ScalarProperty Name="MEMBRANE" ColumnName="MEMBRANE" />
+                <ScalarProperty Name="PCHANGE" ColumnName="PCHANGE" />
+                <ScalarProperty Name="PCONTROL" ColumnName="PCONTROL" />
+                <ScalarProperty Name="DAMAGE" ColumnName="DAMAGE" />
+                <ScalarProperty Name="SIGNAL" ColumnName="SIGNAL" />
+                <ScalarProperty Name="PROTECT" ColumnName="PROTECT" />
+                <ScalarProperty Name="FNEEDLE" ColumnName="FNEEDLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_cmanoreport" FunctionName="FireLowDBModel.Store.sp_cmanoreport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_cmanoreport_Result">
+                <ScalarProperty Name="JID" ColumnName="JID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SSTATUS" ColumnName="SSTATUS" />
+                <ScalarProperty Name="VNU" ColumnName="VNU" />
+                <ScalarProperty Name="SNU" ColumnName="SNU" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="WPLACE" ColumnName="WPLACE" />
+                <ScalarProperty Name="WDATE" ColumnName="WDATE" />
+                <ScalarProperty Name="JDESC" ColumnName="JDESC" />
+                <ScalarProperty Name="PRESSURE" ColumnName="PRESSURE" />
+                <ScalarProperty Name="SEAL" ColumnName="SEAL" />
+                <ScalarProperty Name="SVALVE" ColumnName="SVALVE" />
+                <ScalarProperty Name="MANOMETER" ColumnName="MANOMETER" />
+                <ScalarProperty Name="VALVE" ColumnName="VALVE" />
+                <ScalarProperty Name="FUNCTIONALITY" ColumnName="FUNCTIONALITY" />
+                <ScalarProperty Name="RESET" ColumnName="RESET" />
+                <ScalarProperty Name="EPUNCH" ColumnName="EPUNCH" />
+                <ScalarProperty Name="MEMBRANE" ColumnName="MEMBRANE" />
+                <ScalarProperty Name="PCHANGE" ColumnName="PCHANGE" />
+                <ScalarProperty Name="PCONTROL" ColumnName="PCONTROL" />
+                <ScalarProperty Name="DAMAGE" ColumnName="DAMAGE" />
+                <ScalarProperty Name="SIGNAL" ColumnName="SIGNAL" />
+                <ScalarProperty Name="PROTECT" ColumnName="PROTECT" />
+                <ScalarProperty Name="FNEEDLE" ColumnName="FNEEDLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_cmemreport" FunctionName="FireLowDBModel.Store.sp_cmemreport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_cmemreport_Result">
+                <ScalarProperty Name="JID" ColumnName="JID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SSTATUS" ColumnName="SSTATUS" />
+                <ScalarProperty Name="VNU" ColumnName="VNU" />
+                <ScalarProperty Name="SNU" ColumnName="SNU" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="WPLACE" ColumnName="WPLACE" />
+                <ScalarProperty Name="WDATE" ColumnName="WDATE" />
+                <ScalarProperty Name="JDESC" ColumnName="JDESC" />
+                <ScalarProperty Name="PRESSURE" ColumnName="PRESSURE" />
+                <ScalarProperty Name="SEAL" ColumnName="SEAL" />
+                <ScalarProperty Name="SVALVE" ColumnName="SVALVE" />
+                <ScalarProperty Name="MANOMETER" ColumnName="MANOMETER" />
+                <ScalarProperty Name="VALVE" ColumnName="VALVE" />
+                <ScalarProperty Name="FUNCTIONALITY" ColumnName="FUNCTIONALITY" />
+                <ScalarProperty Name="RESET" ColumnName="RESET" />
+                <ScalarProperty Name="EPUNCH" ColumnName="EPUNCH" />
+                <ScalarProperty Name="MEMBRANE" ColumnName="MEMBRANE" />
+                <ScalarProperty Name="PCHANGE" ColumnName="PCHANGE" />
+                <ScalarProperty Name="PCONTROL" ColumnName="PCONTROL" />
+                <ScalarProperty Name="DAMAGE" ColumnName="DAMAGE" />
+                <ScalarProperty Name="SIGNAL" ColumnName="SIGNAL" />
+                <ScalarProperty Name="PROTECT" ColumnName="PROTECT" />
+                <ScalarProperty Name="FNEEDLE" ColumnName="FNEEDLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_cpressreport" FunctionName="FireLowDBModel.Store.sp_cpressreport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_cpressreport_Result">
+                <ScalarProperty Name="JID" ColumnName="JID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SSTATUS" ColumnName="SSTATUS" />
+                <ScalarProperty Name="VNU" ColumnName="VNU" />
+                <ScalarProperty Name="SNU" ColumnName="SNU" />
+                <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+                <ScalarProperty Name="WPLACE" ColumnName="WPLACE" />
+                <ScalarProperty Name="WDATE" ColumnName="WDATE" />
+                <ScalarProperty Name="JDESC" ColumnName="JDESC" />
+                <ScalarProperty Name="PRESSURE" ColumnName="PRESSURE" />
+                <ScalarProperty Name="SEAL" ColumnName="SEAL" />
+                <ScalarProperty Name="SVALVE" ColumnName="SVALVE" />
+                <ScalarProperty Name="MANOMETER" ColumnName="MANOMETER" />
+                <ScalarProperty Name="VALVE" ColumnName="VALVE" />
+                <ScalarProperty Name="FUNCTIONALITY" ColumnName="FUNCTIONALITY" />
+                <ScalarProperty Name="RESET" ColumnName="RESET" />
+                <ScalarProperty Name="EPUNCH" ColumnName="EPUNCH" />
+                <ScalarProperty Name="MEMBRANE" ColumnName="MEMBRANE" />
+                <ScalarProperty Name="PCHANGE" ColumnName="PCHANGE" />
+                <ScalarProperty Name="PCONTROL" ColumnName="PCONTROL" />
+                <ScalarProperty Name="DAMAGE" ColumnName="DAMAGE" />
+                <ScalarProperty Name="SIGNAL" ColumnName="SIGNAL" />
+                <ScalarProperty Name="PROTECT" ColumnName="PROTECT" />
+                <ScalarProperty Name="FNEEDLE" ColumnName="FNEEDLE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_datediff" FunctionName="FireLowDBModel.Store.sp_datediff">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_datediff_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="COUNT" ColumnName="COUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_datemonth" FunctionName="FireLowDBModel.Store.sp_datemonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_datemonth_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TCUSTOMER" ColumnName="TCUSTOMER" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="PCLASS" ColumnName="PCLASS" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+                <ScalarProperty Name="NEXTFILLING" ColumnName="NEXTFILLING" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+                <ScalarProperty Name="TPERIOD" ColumnName="TPERIOD" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="TSTATUS" ColumnName="TSTATUS" />
+                <ScalarProperty Name="CARE" ColumnName="CARE" />
+                <ScalarProperty Name="FILL" ColumnName="FILL" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+                <ScalarProperty Name="FILLDATE" ColumnName="FILLDATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_datenow" FunctionName="FireLowDBModel.Store.sp_datenow">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_datenow_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TCUSTOMER" ColumnName="TCUSTOMER" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="PCLASS" ColumnName="PCLASS" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+                <ScalarProperty Name="NEXTFILLING" ColumnName="NEXTFILLING" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+                <ScalarProperty Name="TPERIOD" ColumnName="TPERIOD" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="TSTATUS" ColumnName="TSTATUS" />
+                <ScalarProperty Name="CARE" ColumnName="CARE" />
+                <ScalarProperty Name="FILL" ColumnName="FILL" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+                <ScalarProperty Name="FILLDATE" ColumnName="FILLDATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_dateyear" FunctionName="FireLowDBModel.Store.sp_dateyear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_dateyear_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TCUSTOMER" ColumnName="TCUSTOMER" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="PCLASS" ColumnName="PCLASS" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+                <ScalarProperty Name="NEXTFILLING" ColumnName="NEXTFILLING" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+                <ScalarProperty Name="TPERIOD" ColumnName="TPERIOD" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="TSTATUS" ColumnName="TSTATUS" />
+                <ScalarProperty Name="CARE" ColumnName="CARE" />
+                <ScalarProperty Name="FILL" ColumnName="FILL" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+                <ScalarProperty Name="FILLDATE" ColumnName="FILLDATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_fillreport" FunctionName="FireLowDBModel.Store.sp_fillreport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="FireLowDBModel.sp_fillreport_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="TCUSTOMER" ColumnName="TCUSTOMER" />
+                <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+                <ScalarProperty Name="PTYPE" ColumnName="PTYPE" />
+                <ScalarProperty Name="PCLASS" ColumnName="PCLASS" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="TAREA" ColumnName="TAREA" />
+                <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+                <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+                <ScalarProperty Name="NEXTFILLING" ColumnName="NEXTFILLING" />
+                <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+                <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+                <ScalarProperty Name="TPERIOD" ColumnName="TPERIOD" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="TSTATUS" ColumnName="TSTATUS" />
+                <ScalarProperty Name="CARE" ColumnName="CARE" />
+                <ScalarProperty Name="FILL" ColumnName="FILL" />
+                <ScalarProperty Name="CAPACITY" ColumnName="CAPACITY" />
+                <ScalarProperty Name="FILLDATE" ColumnName="FILLDATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

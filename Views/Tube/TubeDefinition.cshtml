@@ -1,0 +1,169 @@
+﻿@model  Tuple<List<CUSTOMER>, List<PRODUCT>>
+
+@{
+    ViewBag.Title = "TubeDefinition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Tube/TubeSave" method="post">
+            <div class="form-body">
+                <h3 class="form-section col-md-10">Ürün Bilgileri</h3>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Ürün Cinsi</label>
+                    <div class="col-md-4">
+                        <select id="type" name="PTYPE" class="bs-select form-control input-circle" data-live-search="true">
+                            <option value=""> - Select -</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Ürün Seri No *</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TSERIAL" name="TSERIAL" class="form-control input-circle" placeholder="">
+                        <input type="hidden" id="ID" name="ID" value="0" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Ürün Sınıfı</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="1" /> İş Makineleri
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="2" /> Tarım Makineleri
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="3" /> Deniz Araçları
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="4" /> Havalimanı Yer Aaraçları
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="5" /> Kara Araçları
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="6" /> Jeneratör
+                            </label>
+                            <label>
+                                <input type="radio" id="PCLASS" name="PCLASS" value="7" /> Diğer
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Hacim Bilgisi</label>
+                    <div class="col-md-4">
+                        <input type="text" id="CAPACITY" name="CAPACITY" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Detay Bilgisi</label>
+                    <div class="col-md-4">
+                        <input type="text" id="DETAIL" name="DETAIL" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Üretici Firma</label>
+                    <div class="col-md-4">
+                        <input type="text" id="MANUFACTURER" name="MANUFACTURER" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">İçeriği</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TCONTENT" name="TCONTENT" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Müşteri</label>
+                    <div class="col-md-4">
+                        <select id="TCUSTOMER" name="TCUSTOMER" class="bs-select form-control input-circle" data-live-search="true" data-size="8">
+                            @foreach (var item in Model.Item1)
+                            {
+                                <option value="@Html.DisplayFor(model=> item.APPELLATION)">@Html.DisplayFor(model => item.APPELLATION)</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Ürün Yeri</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TAREA" name="TAREA" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Konumu</label>
+                    <div class="col-md-4">
+                        <input type="text" id="LOCATION" name="LOCATION" class="form-control input-circle" placeholder="Navigasyon Linkini Giriniz">
+                    </div>
+                </div>
+
+
+
+                @*<div class="form-group">
+                        <label class="col-md-3 control-label">İlk Dolum Tarihi *</label>
+                        <div class="col-md-4">
+                            <div class="input-icon right">
+                                <input type="datetime" id="FIRSTFILLING" name="FIRSTFILLING" class="form-control input-circle" placeholder="Yıl - Ay - Gün Formatında Giriniz">
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">
+                        İlk Dolum/Bakım Tarihi *
+                    </label>
+                    <div class="col-md-5">
+                        <input class="form-control form-control-inline input-medium date-picker input-circle" data-date-format="dd-mm-yyyy" id="FIRSTFILLING" name="FIRSTFILLING" size="16" type="text" value="" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Bakım Periyodu</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" id="TPERIOD" name="TPERIOD" value="1" /> Aylık Bakım A-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div style="padding-top:50px">
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" id="btn-1" class="btn btn-circle green">Kaydet</button>
+                            <a class="btn btn-circle" href="/Tube/TubeTable"> Vazgeç </a>
+                            @*<button type="button" class="btn btn-circle grey-salsa btn-outline">İptal</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

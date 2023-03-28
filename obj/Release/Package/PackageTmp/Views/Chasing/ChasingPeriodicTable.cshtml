@@ -1,0 +1,119 @@
+﻿@model  Tuple<List<CUSTOMER>, List<PRODUCT>>
+
+@{
+    ViewBag.Title = "ChasingPeriodicTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Definition/SaveUser" method="post">
+            <div class="col-md-pull-12">
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-comments"></i>Periyodik Bakım Takip Listesi
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse"> </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                            <a href="javascript:;" class="reload"> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Firma</th>
+                                        <th> Durum </th>
+                                        <th> Dolum </th>
+                                        <th> Ürün Tipi</th>
+                                        <th> Seri No</th>
+                                        <th> Konum </th>
+                                        <th width="8%"> Periyodik Bakım Zamanlaması </th>
+                                        <th> Önceki Bakım </th>
+                                        <th> Sıradaki Bakım </th>
+                                        <th width="2">  <i class="fa fa-arrow-circle-down "></i> Onayla</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Item2)
+                                    {
+                                        if (item.TSTATUS == 0)
+                                        {
+                                            <tr>
+
+
+                                                @*<td> @Html.DisplayFor(model => item.TCUSTOMER) </td>*@
+
+                                                <td class="highlight">
+                                                    <div class="success"></div>
+                                                    <a href="~/Chasing/ChasingPeriodicList?id=@Html.DisplayFor(model => item.ID)">@Html.DisplayFor(model => item.TCUSTOMER)</a>
+                                                </td>
+
+                                                @if (item.CARE == 0)
+                                                {
+                                                    <td width="2" align="center" class="font-red-haze">Bekliyor</td>
+                                                }
+                                                else
+                                                {
+                                                    <td width="2" align="center" class="font-green-haze">İşlem Tamam</td>
+                                                }
+                                                @if (item.FILL == 0)
+                                                {
+                                                    <td width="2" align="center" class="font-red-haze">Bekliyor</td>
+                                                }
+                                                else
+                                                {
+                                                    <td width="2" align="center" class="font-green-haze">İşlem Tamam</td>
+                                                }
+
+
+                                                <td> @Html.DisplayFor(model => item.PTYPE) </td>
+                                                <td> @Html.DisplayFor(model => item.SERIAL) </td>
+
+                                                <td width="5%" align="center">
+                                                    <a href="@Html.DisplayFor(model => item.LOCATION)" target="_blank" class="btn btn-icon-only yellow">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </td>
+
+                                                <td align="center">
+
+                                                    @if (item.TPERIOD == 1)
+                                                    {
+                                                        <span class="label label-sm label-primary"> A-1 </span>
+                                                    }
+                                                    @if (item.TPERIOD == 5)
+                                                    {
+                                                        <span class="label label-sm label-primary"> 5Y-1 </span>
+                                                    }
+                                                    @if (item.TPERIOD == 3)
+                                                    {
+                                                        <span class="label label-sm label-primary"> 6A-1 </span>
+                                                    }
+                                                    @if (item.TPERIOD == 4)
+                                                    {
+                                                        <span class="label label-sm label-primary"> Y-1 </span>
+                                                    }
+
+                                                </td>
+
+                                                @*<td> @Html.Raw(item.FIRSTFILLING) </td>
+                                                    <td> @Html.DisplayFor(model => item.NEXTFILLING) </td>*@
+                                                <td>  @Convert.ToDateTime(item.FIRSTFILLING).ToString("dd/MM/yyyy")</td>
+                                                <td>  @Convert.ToDateTime(item.NEXTFILLING).ToString("dd/MM/yyyy")</td>
+                                                <td align="center"><a href="~/Chasing/ChasingPeriodicDetail?id=@Html.DisplayFor(model =>item.ID)"> <i class="btn btn-outline btn-circle btn-sm blue fa fa-edit"></i></a></td>
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

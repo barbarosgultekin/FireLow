@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content" style="min-height:1200px">
+    <div class="portlet-body form">
+        <div class="invoice-content-2 bordered">
+            <div class="row invoice-head">
+                <div class="col-md-7 col-xs-6">
+                    <div class="invoice-logo">
+                        <img src="../assets/pages/img/logos/logo5.jpg" class="img-responsive" alt="" />
+                        @*<h1 class="uppercase">Invoice</h1>*@
+                    </div>
+                </div>
+                <div class="col-md-5 col-xs-6">
+                    <div class="company-address">
+                        <span class="bold uppercase">Defenser App.</span>
+                        <br />
+                        <span class="bold">From </span>@Html.Raw(ViewBag.from.ToString("dd/MM/yyyy"))
+                        <br />
+                        <span class="bold">To </span>@Html.Raw(ViewBag.to.ToString("dd/MM/yyyy"))                       
+                        <br />
+                        <span class="bold">Date </span> @Html.Raw(System.DateTime.Now.ToString())
+                    </div>
+                </div>
+            </div>
+
+
+            @*<div class="row invoice-cust-add">
+                    <div class="col-xs-3">
+                        <h2 class="invoice-title uppercase">Customer</h2>
+                        <p class="invoice-desc">@Html.Raw(item.CID)</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <h2 class="invoice-title uppercase">Date</h2>
+                        <p class="invoice-desc">@Html.Raw(item.WDATE.ToString("dd/MM/yyyy"))</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h2 class="invoice-title uppercase">Address</h2>
+                        <p class="invoice-desc inv-address">@Html.Raw(item.WPLACE)</p>
+                    </div>
+                </div>*@
+
+            @if (ViewBag.rtype == "FILL")
+            {
+                <div class="row invoice-body">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="invoice-title uppercase">Description</th>
+                                    <th width="2px" class="invoice-title uppercase text-center">Job ID</th>
+                                    <th class="invoice-title uppercase text-center">Customer</th>
+                                    <th class="invoice-title uppercase text-center">Serial Number</th>
+                                    <th class="invoice-title uppercase text-center">Product Type</th>
+                                    <th class="invoice-title uppercase text-center">Job Date</th>
+                                    <th class="invoice-title uppercase text-center">Job Area</th>
+                                    <th class="invoice-title uppercase text-center">Product Cap</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center sbold">@Html.Raw(item.TCUSTOMER)</td>
+                                        <td> <h3> @Html.Raw(item.ID)</h3> </td>
+                                        <td class="text-center sbold">@Html.Raw(item.SERIAL)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.PTYPE)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.FILLDATE.ToString("dd/MM/yyyy"))</td>
+                                        <td class="text-center sbold">@Html.Raw(item.TAREA)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.CAPACITY)</td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <div class="row invoice-body">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="invoice-title uppercase">Description</th>
+                                    <th width="2px" class="invoice-title uppercase text-center">Job Number</th>
+                                    <th class="invoice-title uppercase text-center">Veich Number</th>
+                                    <th class="invoice-title uppercase text-center">Serial Number</th>
+                                    <th class="invoice-title uppercase text-center">Date</th>
+                                    <th class="invoice-title uppercase text-center">Job Description</th>
+                                    <th class="invoice-title uppercase text-center">Job Action</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+
+                                <tbody>
+                                    <tr>
+                                        <td> <h3> @Html.Raw(item.WPLACE)</h3> </td>
+                                        <td class="text-center sbold">@Html.Raw(item.JID)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.VNU)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.SNU)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.WDATE.ToString("dd/MM/yyyy"))</td>
+                                        <td class="text-center sbold">@Html.Raw(item.JDESC)</td>
+                                        <td class="text-center sbold">@Html.Raw(item.ACTION)</td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            }
+
+
+
+            @*<div class="row invoice-subtotal">
+                    <div class="col-xs-3">
+                        <h2 class="invoice-title uppercase">Subtotal</h2>
+                        <p class="invoice-desc">23,800$</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <h2 class="invoice-title uppercase">Tax (0%)</h2>
+                        <p class="invoice-desc">0$</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h2 class="invoice-title uppercase">Total</h2>
+                        <p class="invoice-desc grand-total">23,800$</p>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="btn btn-lg green-haze hidden-print uppercase print-btn" onclick="javascript:window.print();">Print</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

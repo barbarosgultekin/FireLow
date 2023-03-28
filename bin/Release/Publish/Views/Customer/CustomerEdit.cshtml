@@ -1,0 +1,204 @@
+﻿@model Tuple<List<CUSTOMER>, List<PROVINCE>>
+@{
+    ViewBag.Title = "CustomerEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Customer/CustomerSave" method="post">
+            <div class="form-body">
+                <h3 class="form-section">@Html.Raw(ViewBag.CNAME) - Firma Bilgilerini Düzenle</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ünvan</label>
+                            <div class="col-md-8">
+                                <input type="text" id="" name="" class="form-control" placeholder="Girilmesi zorunlu değil.">
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Firma / Adı Soyadı</label>
+                            <div class="col-md-8">
+                                <input type="text" id="APPELLATION" name="APPELLATION" class="form-control" value="@Html.Raw(ViewBag.APPELLATION)">
+                                @*<span class="help-block"> This field has error. </span>*@
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group has-error">
+                            <label class="control-label col-md-3">Yetkili Adı Soyadı *</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CNAME" name="CNAME" class="form-control" value="@Html.Raw(ViewBag.CNAME)">
+                                <input type="hidden" id="REFID" name="REFID" value="@Html.Raw(ViewBag.REFID)" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group has-error">
+                            <label class="control-label col-md-3">Telefon *</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CGSM " name="CGSM" value="@Html.Raw(ViewBag.CGSM)" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Vergi Numarası</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CVNO" name="CVNO" class="form-control" value="@Html.Raw(ViewBag.CVNO)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">T.C Kimlik Numarası</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CTCNO" name="CTCNO" class="form-control" value="@Html.Raw(ViewBag.CTCNO)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">E-Posta Adresi</label>
+                            <div class="col-md-8">
+                                <input type="text" id="CMAIL" name="CMAIL" class="form-control" value="@Html.Raw(ViewBag.CMAIL)">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 has-error">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">DURUMU *</label>
+                                <div class="radio-list">
+                                    <label>
+                                        <input type="radio" id="CSTATUS" name="CSTATUS" value="0" /> PASİF
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="CSTATUS" name="CSTATUS" value="1" /> AKTİF
+                                    </label>
+                                </div>
+                                <div>
+
+                                    <label class="control-label col-md-3"> ** Düzenleme işleminden sonra müşteri durumunu seçiniz.</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <h3 class="form-section">Adres Bilgileri</h3>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group has-error">
+                                <label class="control-label col-md-3">Adres *</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CADRESS" name="CADRESS" value="@Html.Raw(ViewBag.CADRESS)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Adres 2</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CADRESS2" name="CADRESS2" value="@Html.Raw(ViewBag.CADRESS2)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Sanayi Bölgesi</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CINDUSTRIAREA" name="CINDUSTRIAREA" value="@Html.Raw(ViewBag.CINDUSTRIAREA)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">No</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CPROVINCENO" name="CPROVINCENO" value="@Html.Raw(ViewBag.CPROVINCENO)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">İlçe</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CPROVINCE" name="CPROVINCE" value="@Html.Raw(ViewBag.CPROVINCE)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        @*<div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">İl</label>
+                                    <div class="col-md-8">
+                                        <select id="CPROVINCE" name="CPROVINCE" class="form-control select2">
+                                            @foreach (var item in Model.Item1)
+                                            {
+                                                <option selected="@Html.DisplayFor(model => item.)">@Html.DisplayFor(model => item.CPROVINCE)</option>
+
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">İlçe</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CDISTRICT" name="CDISTRICT" value="@Html.Raw(ViewBag.CDISTRICT)" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    <button type="submit" id="btn-2" class="btn green">Değişiklikleri Kaydet</button>
+                                    @*<button type="button" class="btn default">İptal</button>*@
+                                    <a class="btn default" href="/Customer/CustomerTable"> Vazgeç </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"> </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

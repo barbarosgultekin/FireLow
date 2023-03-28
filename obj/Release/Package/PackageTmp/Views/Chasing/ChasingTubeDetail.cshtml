@@ -1,0 +1,134 @@
+﻿@model IEnumerable<FireLow.PRODUCT>
+@{
+    ViewBag.Title = "ChasingTubeDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Chasing/ChasingTubeSave" method="post">
+            <div class="col-md-pull-12">
+                <div class="form-body">
+                    <h3 class="form-section col-md-10">Dolum Onayı</h3>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Tüp Seri No </label>
+                        <div class="col-md-4">
+                            <input type="text" id="SERIAL" name="SERIAL" value="@Html.Raw(ViewBag.SERIAL)" class="form-control input-circle" placeholder="">
+                            <input type="hidden" id="ID" name="ID" value="@Html.Raw(ViewBag.id)" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Müşteri</label>
+                        <div class="col-md-4">
+                            <div class="input-icon right">
+                                <input type="text" id="TCUSTOMER" name="TCUSTOMER" value="@Html.Raw(ViewBag.TCUSTOMER)" class="form-control input-circle" placeholder="" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Önceki Dolum</label>
+                        <div class="col-md-4">
+                            <div class="input-icon right">
+                                <input type="text" id="TCUSTOMER" name="TCUSTOMER" value="@Html.Raw(ViewBag.FIRSTFILLING.ToString("dd-MM-yyyy"))" class="form-control input-circle" placeholder="" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3">
+                            Dolumun Yapıldığı Tarih
+                        </label>
+                        <div class="col-md-5">
+                            <input class="form-control form-control-inline input-medium date-picker input-circle" data-date-format="dd-mm-yyyy" id="FIRSTFILLING" name="FIRSTFILLING" size="16" type="text" value="" />
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Bakım Periyodu</label>
+                        <div class="col-md-4">
+                            <div class="radio-list">
+                                @switch (ViewBag.TPERIOD)
+                                {
+                                    case 1:
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="1" checked /> Aylık Bakım A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                        </label>
+                                        break;
+
+                                    case 5:
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="1" /> Aylık Bakım A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="5" checked /> 5 Yıllık Bakım 5Y-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                        </label>
+                                        break;
+                                    case 3:
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="1" /> Aylık Bakım A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="3" checked /> 6 Aylık Bakım 6A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="4" /> Yıllık Bakım Y-1
+                                        </label>
+                                        break;
+                                    case 4:
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="1" /> Aylık Bakım A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="5" /> 5 Yıllık Bakım 5Y-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="3" /> 6 Aylık Bakım 6A-1
+                                        </label>
+                                        <label>
+                                            <input type="radio" id="TPERIOD" name="TPERIOD" value="4" checked /> Yıllık Bakım Y-1
+                                        </label>
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="form-actions">
+                    <div class="row">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" id="btn-1" class="btn btn-circle green">Kaydet</button>
+                            <a class="btn btn-circle" href="/Chasing/ChasingTubeTable"> Vazgeç </a>
+                            @*<button type="button" class="btn btn-circle grey-salsa btn-outline">İptal</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

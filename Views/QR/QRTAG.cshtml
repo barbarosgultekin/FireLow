@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "QRTAG";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content" style="min-height:1200px">
+    <div class="col-md-10">
+        @*<form class="search-form search-form-expanded" action=" https://localhost:44332/Customer/CustomerDetail" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Müşteri Ara" name="id">
+                    <span class="input-group-btn">
+                        <a href="javascript:;" class="btn submit">
+                            <i class="icon-magnifier"></i>
+                        </a>
+                    </span>
+                </div>
+            </form>
+            <br />
+
+        <input id="qr" type="text" value="" style="width:30%" />*@
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <div class="form-group form-md-line-input">
+                    <input type="text" class="form-control" id="qr" value="http://qdesing.tech/QR/QRVIEW?id=" >                  
+                    <label for="form_control_1">QR Code Generator</label>
+                    <span class="help-block">Some help goes here...</span>
+                </div>
+            </div>
+
+            <br />
+            <a class="btn btn-sm purple" onclick="javascript: printDiv('divYazdir');"> Print <i class="fa fa-print"></i> </a>
+        </div>
+
+
+        @*<a href="@Html.DisplayFor(model => item.LOCATION)" target="_blank" class="btn btn-icon-only yellow">
+                <i class="fa fa-search"></i>
+            </a>*@
+
+
+        <div id="divYazdir">
+
+            <div id="qrcode"></div>
+
+        </div>
+
+
+
+    </div>
+</div>

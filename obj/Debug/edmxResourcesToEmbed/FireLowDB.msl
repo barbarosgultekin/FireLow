@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FireLowDBModelStoreContainer" CdmEntityContainer="FireLowDBEntities">
+    <EntitySetMapping Name="CHASINGTABLE">
+      <EntityTypeMapping TypeName="FireLowDBModel.CHASINGTABLE">
+        <MappingFragment StoreEntitySet="CHASINGTABLE">
+          <ScalarProperty Name="REFID" ColumnName="REFID" />
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+          <ScalarProperty Name="CGSM" ColumnName="CGSM" />
+          <ScalarProperty Name="APPELLATION" ColumnName="APPELLATION" />
+          <ScalarProperty Name="TSERIAL" ColumnName="TSERIAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTROLREPORT">
+      <EntityTypeMapping TypeName="FireLowDBModel.CONTROLREPORT">
+        <MappingFragment StoreEntitySet="CONTROLREPORT">
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PRESSURECLOCK" ColumnName="PRESSURECLOCK" />
+          <ScalarProperty Name="GIB" ColumnName="GIB" />
+          <ScalarProperty Name="NOZZLE" ColumnName="NOZZLE" />
+          <ScalarProperty Name="HOSE" ColumnName="HOSE" />
+          <ScalarProperty Name="LABEL" ColumnName="LABEL" />
+          <ScalarProperty Name="DATELABEL" ColumnName="DATELABEL" />
+          <ScalarProperty Name="FIRSTFILLINGDATE" ColumnName="FIRSTFILLINGDATE" />
+          <ScalarProperty Name="REFILLDATE" ColumnName="REFILLDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FireLowDBModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="FireLowDBModel.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="REFID" ColumnName="REFID" />
+          <ScalarProperty Name="COMPANYID" ColumnName="COMPANYID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER">
+      <EntityTypeMapping TypeName="FireLowDBModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CPROVINCENO" ColumnName="CPROVINCENO" />
+          <ScalarProperty Name="CINDUSTRIAREA" ColumnName="CINDUSTRIAREA" />
+          <ScalarProperty Name="CDISTRICT" ColumnName="CDISTRICT" />
+          <ScalarProperty Name="CPROVINCE" ColumnName="CPROVINCE" />
+          <ScalarProperty Name="CVNO" ColumnName="CVNO" />
+          <ScalarProperty Name="CTCNO" ColumnName="CTCNO" />
+          <ScalarProperty Name="CMAIL" ColumnName="CMAIL" />
+          <ScalarProperty Name="CGSM" ColumnName="CGSM" />
+          <ScalarProperty Name="CADRESS2" ColumnName="CADRESS2" />
+          <ScalarProperty Name="CADRESS" ColumnName="CADRESS" />
+          <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+          <ScalarProperty Name="APPELLATION" ColumnName="APPELLATION" />
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="REFID" ColumnName="REFID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUBE">
+      <EntityTypeMapping TypeName="FireLowDBModel.TUBE">
+        <MappingFragment StoreEntitySet="TUBE">
+          <ScalarProperty Name="TCONTENT" ColumnName="TCONTENT" />
+          <ScalarProperty Name="FIRSTFILLING" ColumnName="FIRSTFILLING" />
+          <ScalarProperty Name="MANUFACTURER" ColumnName="MANUFACTURER" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+          <ScalarProperty Name="TSERIAL" ColumnName="TSERIAL" />
+          <ScalarProperty Name="TNO" ColumnName="TNO" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="FIRECLASS" ColumnName="FIRECLASS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

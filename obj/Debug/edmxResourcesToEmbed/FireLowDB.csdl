@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FireLowDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHASINGTABLE">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMERID" Type="Int32" Nullable="false" />
+    <Property Name="CNAME" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CGSM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="APPELLATION" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TSERIAL" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CONTROLREPORT">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="CUSTOMERID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRESSURECLOCK" Type="Int32" />
+    <Property Name="GIB" Type="Int32" />
+    <Property Name="NOZZLE" Type="Int32" />
+    <Property Name="HOSE" Type="Int32" />
+    <Property Name="LABEL" Type="Int32" />
+    <Property Name="DATELABEL" Type="Int32" />
+    <Property Name="FIRSTFILLINGDATE" Type="DateTime" Precision="0" />
+    <Property Name="REFILLDATE" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="COMPANYID" Type="Int32" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="FireLowDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHASINGTABLE" EntityType="Self.CHASINGTABLE" />
+    <EntitySet Name="CONTROLREPORT" EntityType="Self.CONTROLREPORT" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" />
+    <EntitySet Name="CUSTOMER" EntityType="FireLowDBModel.CUSTOMER" />
+    <EntitySet Name="TUBE" EntityType="FireLowDBModel.TUBE" />
+  </EntityContainer>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMERID" Type="Int32" Nullable="false" />
+    <Property Name="APPELLATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CADRESS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CADRESS2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CGSM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CTCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CVNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CPROVINCE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CDISTRICT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CINDUSTRIAREA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CPROVINCENO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TUBE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRECLASS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TSERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MANUFACTURER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIRSTFILLING" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TCONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

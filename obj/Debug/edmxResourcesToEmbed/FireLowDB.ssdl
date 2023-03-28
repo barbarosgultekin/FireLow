@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FireLowDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHASINGTABLE">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMERID" Type="int" Nullable="false" />
+    <Property Name="CNAME" Type="nchar" MaxLength="10" />
+    <Property Name="CGSM" Type="nchar" MaxLength="10" />
+    <Property Name="APPELLATION" Type="nchar" MaxLength="10" />
+    <Property Name="TSERIAL" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CONTROLREPORT">
+    <Key>
+      <PropertyRef Name="CUSTOMERID" />
+    </Key>
+    <Property Name="CUSTOMERID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRESSURECLOCK" Type="int" />
+    <Property Name="GIB" Type="int" />
+    <Property Name="NOZZLE" Type="int" />
+    <Property Name="HOSE" Type="int" />
+    <Property Name="LABEL" Type="int" />
+    <Property Name="DATELABEL" Type="int" />
+    <Property Name="FIRSTFILLINGDATE" Type="date" />
+    <Property Name="REFILLDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMERID" Type="int" Nullable="false" />
+    <Property Name="APPELLATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="CNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="CADRESS" Type="nvarchar" MaxLength="150" />
+    <Property Name="CADRESS2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CGSM" Type="nvarchar" MaxLength="10" />
+    <Property Name="CMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="CTCNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CVNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CDISTRICT" Type="nvarchar" MaxLength="50" />
+    <Property Name="CINDUSTRIAREA" Type="nvarchar" MaxLength="50" />
+    <Property Name="CPROVINCENO" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TUBE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRECLASS" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOCATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="TSERIAL" Type="nvarchar" MaxLength="50" />
+    <Property Name="DETAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="MANUFACTURER" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIRSTFILLING" Type="nvarchar" MaxLength="50" />
+    <Property Name="TCONTENT" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COMPANYID" Type="int" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityContainer Name="FireLowDBModelStoreContainer">
+    <EntitySet Name="CHASINGTABLE" EntityType="Self.CHASINGTABLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTROLREPORT" EntityType="Self.CONTROLREPORT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TUBE" EntityType="Self.TUBE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

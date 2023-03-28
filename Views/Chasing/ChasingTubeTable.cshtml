@@ -1,0 +1,302 @@
+﻿@model  Tuple<List<CUSTOMER>, List<PRODUCT>>
+
+@{
+    ViewBag.Title = "ChasingTubeTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Chasing/ChasingTubeTable" method="post">
+            <div class="col-md-pull-10">
+
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-comments"></i>Pistonlu Akümülatör Dolumu Takip Listesi
+                        </div>
+                        @*<div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                <a href="javascript:;" class="reload"> </a>
+                            </div>*@
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th> Firma / Adı Soyadı </th>
+                                        <th> Durumu </th>
+                                        <th width="2" align="center"> Konum </th>
+                                        <th> Tüp Sınıfı </th>
+                                        <th> Tüp No </th>
+                                        <th> Dolum Zamanlaması </th>
+                                        <th> Dolum Tarihi </th>
+                                        <th> Bir Sonraki Dolum Tarihi </th>
+                                        <th width="2">  <i class="fa fa-arrow-circle-down "></i> Onayla</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.Item2)
+
+                                    {
+                                        if (item.TSTATUS == 0)
+                                        {
+
+                                    <tr>
+                                        <td> @Html.DisplayFor(model => item.TCUSTOMER) </td>
+
+                                        @*<td class="highlight">
+            <div class="success"></div>
+            <a href="~/Chasing/ChasingTubeDetail?id=@Html.DisplayFor(model => item.CID)">@Html.DisplayFor(model => item.TCUSTOMER)</a>
+        </td>*@
+
+                                        @if (item.FILL == 0)
+                                        {
+                                            <td width="2" align="center" class="font-red-haze">Bekliyor</td>
+                                        }
+                                        else
+                                        {
+                                            <td width="2" align="center" class="font-green-haze">İşlem Tamam</td>
+                                        }
+
+                                        <td width="5%" align="center">
+                                            <a href="@Html.DisplayFor(model => item.LOCATION)" target="_blank" class="btn btn-icon-only yellow">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </td>
+
+                                        @switch (Convert.ToInt32(item.PCLASS))
+                                        {
+                                            case 1:
+                                                <td>İş Makineleri</td>
+                                                break;
+                                            case 2:
+                                                <td>Tarım & Orman Makineleri</td>
+                                                break;
+                                            case 3:
+                                                <td>Deniz Araçları</td>
+                                                break;
+                                            case 4:
+                                                <td>Havalimanı Yer Aaraçları</td>
+                                                break;
+                                            case 5:
+                                                <td>Kara Araçları</td>
+                                                break;
+                                            case 6:
+                                                <td>Jeneratör</td>
+                                                break;
+                                            case 7:
+                                                <td>Diğer</td>
+                                                break;
+
+                                            default:
+                                                <td>Belirtilmemiş</td>
+                                                break;
+                                        }
+
+
+                                        <td> @Html.DisplayFor(model => item.SERIAL) </td>
+
+                                        <td>
+
+                                            @if (item.TPERIOD == 1)
+                                            {
+                                                <span class="label label-sm label-primary"> A-1 </span>
+                                            }
+                                            @if (item.TPERIOD == 5)
+                                            {
+                                                <span class="label label-sm label-primary"> 5Y-1 </span>
+                                            }
+                                            @if (item.TPERIOD == 3)
+                                            {
+                                                <span class="label label-sm label-primary"> 6A-1 </span>
+                                            }
+                                            @if (item.TPERIOD == 4)
+                                            {
+                                                <span class="label label-sm label-primary"> Y-1 </span>
+                                            }
+
+                                        </td>
+
+                                        @*<td> @Html.DisplayFor(model => item.FIRSTFILLING) </td>*@
+                                        <td>  @Convert.ToDateTime(item.FIRSTFILLING).ToString("dd/MM/yyyy")</td>
+                                        @*<td> @Html.DisplayFor(model => item.NEXTFILLING) </td>*@
+                                        <td>  @Convert.ToDateTime(item.NEXTFILLING).ToString("dd/MM/yyyy")</td>
+
+                                        @*<td align="center"><button type="submit" id="btn-2" class="btn green">İşlemi Onayla</button> </td>*@
+
+                                        <td align="center"><a href="~/Chasing/ChasingTubeDetail?id=@Html.DisplayFor(model =>item.ID)"> <i class="btn btn-outline btn-circle btn-sm blue fa fa-edit"></i></a></td>
+
+                                    </tr>
+                                        }
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-md-12">
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-comments"></i>Periyodik Bakım Takip Listesi
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse"> </a>
+                                <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                <a href="javascript:;" class="reload"> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th> Firma / Adı Soyadı</th>
+                                            <th> Konum</th>
+                                            <th> Durum</th>
+                                            <th> Yetkili</th>
+                                            <th> Periyodik Bakım </th>
+                                            <th> İlk Bakım </th>
+                                            <th> Sıradaki Bakım </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> 1 </td>
+                                            <td> Mark</td>
+                                            <td>
+                                                <span class="label label-sm label-success"> Approved</span>
+                                            </td>
+                                            <td> Otto</td>
+                                            <td> makr124</td>
+                                            <td> makr124</td>
+                                            <td> makr124</td>
+                                        </tr>
+                                        <tr>
+                                            <td> 2 </td>
+                                            <td> Jacob</td>
+                                            <td> Nilson</td>
+                                            <td> jac123</td>
+                                            <td>
+                                                <span class="label label-sm label-info"> Pending</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 3 </td>
+                                            <td> Larry</td>
+                                            <td> Cooper</td>
+                                            <td> lar</td>
+                                            <td>
+                                                <span class="label label-sm label-warning"> Suspended</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> 4 </td>
+                                            <td> Sandy</td>
+                                            <td> Lim</td>
+                                            <td> sanlim</td>
+                                            <td>
+                                                <span class="label label-sm label-danger"> Blocked</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </form>
+    </div>
+</div>
+
+
+
+@*<td>
+        <a href="javascript:;" class="btn btn-outline btn-circle btn-sm purple">
+            <i class="fa fa-edit"></i> Düzenle
+        </a>
+    </td>*@
+
+
+
+
+
+
+
+
+
+@*<div class="portlet-body">
+    <div class="table-scrollable">
+        <table class="table table-striped table-bordered table-advance table-hover">
+            <thead>
+                <tr>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> Barbaros A.Ş </td>
+                    <td> DOSAB </td>
+                    <td> # 6 </td>
+                    <td> Kasım.2019 </td>
+                    <td> # 0 </td>
+                    <td> Mayıs.2019 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td align="center"> 6 Ay </td>
+                    <td> Nisan.2019 </td>
+                    <td> Nisan.2020 </td>
+                </tr>
+                <tr>
+                    <td> Barbaros LTD.ŞTİ. </td>
+                    <td> DOSAB </td>
+                    <td> # 6 </td>
+                    <td> Kasım.2019 </td>
+                    <td> # 0 </td>
+                    <td> Mayıs.2019 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td align="center"> 6 Ay </td>
+                    <td> Nisan.2019 </td>
+                    <td> Nisan.2020 </td>
+                </tr>
+                <tr>
+                    <td> Barbaros LTD. </td>
+                    <td> DOSAB </td>
+                    <td> # 6 </td>
+                    <td> Kasım.2019 </td>
+                    <td> # 0 </td>
+                    <td> Mayıs.2019 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td> # 7 </td>
+                    <td> Kasım.2020 </td>
+                    <td align="center"> 6 Ay </td>
+                    <td> Nisan.2019 </td>
+                    <td> Nisan.2020 </td>
+                </tr>
+
+            </tbody>
+        </table>*@
+
+
+@*<td>
+        <a href="javascript:;" class="btn btn-outline btn-circle btn-sm purple">
+            <i class="fa fa-edit"></i> Düzenle
+        </a>
+    </td>*@

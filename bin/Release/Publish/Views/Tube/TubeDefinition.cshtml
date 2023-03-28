@@ -1,0 +1,150 @@
+﻿@model  Tuple<List<CUSTOMER>, List<TUBE>>
+
+@{
+    ViewBag.Title = "TubeDefinition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~/Tube/TubeSave" method="post">
+            <div class="form-body">
+                <h3 class="form-section col-md-10">Ürün Bilgileri</h3>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Tüp Seri No *</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TSERIAL" name="TSERIAL" class="form-control input-circle" placeholder="">
+                        <input type="hidden" id="ID" name="ID" value="0" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Yangın Sınıfı</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="1" /> A Sınıfı Katı Haldeki Yanıcı Maddeler
+                            </label>
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="2" /> B Sınıfı Sıvı Haldeki Yanıcı Maddeler
+                            </label>
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="3" /> C Sınıfı Gaz Haldeki Yanıcı Maddeler
+                            </label>
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="4" /> D Sınıfı Metal Yanıcı Maddeler
+                            </label>
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="5" /> E Sınıfı Eletrik Yangınları
+                            </label>
+                            <label>
+                                <input type="radio" id="FIRECLASS" name="FIRECLASS" value="6" /> F Sınıfı Yağ ve Türevi Yangınlar
+                            </label>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Detay Bilgisi</label>
+                    <div class="col-md-4">
+                        <input type="text" id="DETAIL" name="DETAIL" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Üretici Firma</label>
+                    <div class="col-md-4">
+                        <input type="text" id="MANUFACTURER" name="MANUFACTURER" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">İçeriği</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TCONTENT" name="TCONTENT" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Müşteri</label>
+                    <div class="col-md-4">
+                        <select id="TCUSTOMER" name="TCUSTOMER" class="bs-select form-control input-circle" data-live-search="true" data-size="8">
+                            @foreach (var item in Model.Item1)
+                            {
+                                <option value="@Html.DisplayFor(model=> item.APPELLATION)">@Html.DisplayFor(model => item.APPELLATION)</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                    <label class="col-md-3 control-label">Tüp No</label>
+                    <div class="col-md-4">
+                        <input type="text" id="TNO" name="TNO" class="form-control input-circle" placeholder="">
+                    </div>
+                </div>*@
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-3">Müşteri Adresi</label>
+                    <div class="col-md-4">
+                        <select id="LOCATION" name="LOCATION" class="bs-select form-control input-circle" data-live-search="true" data-size="8">
+                            @foreach (var item in Model.Item1)
+                            {
+                                <option value="@Html.DisplayFor(model=> item.CADRESS)">@Html.DisplayFor(model => item.CADRESS)</option>
+
+                            }
+                        </select>
+                    </div>
+                </div>  
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">İlk Dolum Tarihi *</label>
+                    <div class="col-md-4">
+                        <div class="input-icon right">
+                            <input type="datetime" id="FIRSTFILLING" name="FIRSTFILLING" class="form-control input-circle" placeholder="Yıl - Ay - Gün Formatında Giriniz">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Bakım Periyodu</label>
+                    <div class="col-md-4">
+                        <div class="radio-list">
+                            <label>
+                                <input type="radio" id="TSTATUS" name="TSTATUS" value="1" /> Aylık Bakım A-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TSTATUS" name="TSTATUS" value="2" /> Haftalık Bakım H-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TSTATUS" name="TSTATUS" value="3" /> 6 Aylık Bakım 6A-1
+                            </label>
+                            <label>
+                                <input type="radio" id="TSTATUS" name="TSTATUS" value="4" /> Yıllık Bakım Y-1
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" id="btn-1" class="btn btn-circle green">Kaydet</button>
+                        <a class="btn btn-circle" href="/Tube/TubeTable"> Vazgeç </a>
+                        @*<button type="button" class="btn btn-circle grey-salsa btn-outline">İptal</button>*@
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

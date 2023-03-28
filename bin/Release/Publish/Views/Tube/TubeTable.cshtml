@@ -1,0 +1,123 @@
+﻿@model IEnumerable<FireLow.TUBE>
+@{
+    ViewBag.Title = "TubeTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+}
+<div class="page-content" style="min-height:1112px">
+    <div class="portlet-body form">
+        <form class="form-horizontal" action="~//" method="post">
+            <div class="portlet light bordered">
+                <p></p>
+                <div class="portlet-title">
+                    <p></p>
+
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+
+                        <span class="caption-subject bold uppercase">Ürün Listesi</span>
+                    </div>
+                    <p></p>
+                </div>
+
+
+
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="5"> Sıra No. </th>
+                                    <th width="15"> Yangın Sınıfı </th>
+                                    <th>Tüp Seri Numarası </th>
+                                    <th width="8">
+                                        Ürünü Sil
+                                        <i class="fa fa-remove "></i>
+                                    </th>
+                                    <th> İlk Dolum Tarihi </th>
+                                    <th> Bakım Periyodu </th>
+                                    <th> Detay Bilgisi </th>
+                                    <th> Üretici </th>
+                                    <th> İçeriği </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td align="center">@Html.DisplayFor(model => item.ID)</td>
+
+                                        @switch (Convert.ToInt32(item.FIRECLASS))
+                                        {
+                                            case 1:
+                                                <td>A Sınıfı</td>
+                                                break;
+                                            case 2:
+                                                <td>B Sınıfı</td>
+                                                break;
+                                            case 3:
+                                                <td>C Sınıfı</td>
+                                                break;
+                                            case 4:
+                                                <td>D Sınıfı</td>
+                                                break;
+                                            case 5:
+                                                <td>E Sınıfı</td>
+                                                break;
+                                            case 6:
+                                                <td>F Sınıfı</td>
+                                                break;
+
+                                            default:<td>Belirtilmemiş</td>
+                                                break;
+                                        }
+
+
+                                        @*<td>@Html.DisplayFor(model => item.FIRECLASS)</td>*@
+                                        <td >@Html.DisplayFor(model => item.TSERIAL)</td>
+                                        @*<td align="center">
+                                                <a href="~/Tube/TubeSave?ID=@Html.DisplayFor(model =>item.ID)"><i class="btn btn-outline btn-circle btn-sm purple fa fa-remove"></i></a>
+                                            </td>*@
+                                        <td align="center">
+                                            <a href="~/Tube/Notification?ID=@Html.DisplayFor(model =>item.ID)"><i class="btn btn-outline btn-circle btn-sm purple fa fa-remove"></i></a>
+                                        </td>
+                                        <td>@Html.DisplayFor(model => item.FIRSTFILLING)</td>
+
+                                        @switch (item.TSTATUS)
+                                        {
+                                            case 1:
+                                                <td width="5%" align="center">Aylık A-1</td>
+                                                break;
+                                            case 2:
+                                                <td width="5%" align="center">Haftalık H-1</td>
+                                                break;
+                                            case 3:
+                                                <td width="5%" align="center">6 Aylık 6A-1</td>
+                                                break;
+                                            case 4:
+                                                <td width="5%" align="center">Yıllık Y-1</td>
+                                                break;
+
+
+                                            default:<td>Belirtilmemiş</td>
+                                                break;
+                                        }
+
+                                        @*<td width="5%" align="center">@Html.DisplayFor(model => item.TSTATUS)</td>*@
+
+
+
+                                        <td>@Html.DisplayFor(model => item.DETAIL)</td>
+                                        <td>@Html.DisplayFor(model => item.MANUFACTURER)</td>
+                                        <td>@Html.DisplayFor(model => item.TCONTENT)</td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FireLowDBModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHECKLIST">
+    <Key>
+      <PropertyRef Name="JID" />
+    </Key>
+    <Property Name="JID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="PID" Type="int" Nullable="false" />
+    <Property Name="SSTATUS" Type="nvarchar" MaxLength="50" />
+    <Property Name="VNU" Type="nvarchar" MaxLength="50" />
+    <Property Name="SNU" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACTION" Type="nvarchar" MaxLength="255" />
+    <Property Name="WPLACE" Type="nvarchar" MaxLength="50" />
+    <Property Name="WDATE" Type="date" />
+    <Property Name="JDESC" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRESSURE" Type="nvarchar" MaxLength="50" />
+    <Property Name="SEAL" Type="nvarchar" MaxLength="50" />
+    <Property Name="SVALVE" Type="nvarchar" MaxLength="50" />
+    <Property Name="MANOMETER" Type="nvarchar" MaxLength="50" />
+    <Property Name="VALVE" Type="nvarchar" MaxLength="50" />
+    <Property Name="FUNCTIONALITY" Type="nvarchar" MaxLength="50" />
+    <Property Name="RESET" Type="nvarchar" MaxLength="50" />
+    <Property Name="EPUNCH" Type="nvarchar" MaxLength="50" />
+    <Property Name="MEMBRANE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PCHANGE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PCONTROL" Type="nvarchar" MaxLength="50" />
+    <Property Name="DAMAGE" Type="nvarchar" MaxLength="50" />
+    <Property Name="SIGNAL" Type="nvarchar" MaxLength="50" />
+    <Property Name="PROTECT" Type="nvarchar" MaxLength="50" />
+    <Property Name="FNEEDLE" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APPELLATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="CNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="CTAXNO" Type="nvarchar" MaxLength="11" />
+    <Property Name="CTAXOFFICE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CGSM" Type="nvarchar" MaxLength="11" />
+    <Property Name="CMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="CPROVINCE" Type="nvarchar" MaxLength="50" />
+    <Property Name="CDISTRICT" Type="nvarchar" MaxLength="50" />
+    <Property Name="CADRESS" Type="nvarchar" MaxLength="150" />
+    <Property Name="CAREA" Type="nvarchar" MaxLength="200" />
+    <Property Name="CSTATUS" Type="int" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CID" Type="int" />
+    <Property Name="TCUSTOMER" Type="nvarchar" MaxLength="50" />
+    <Property Name="SERIAL" Type="nvarchar" MaxLength="50" />
+    <Property Name="PTYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="PCLASS" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOCATION" Type="nvarchar" MaxLength="50" />
+    <Property Name="TAREA" Type="nvarchar" MaxLength="200" />
+    <Property Name="MANUFACTURER" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIRSTFILLING" Type="date" />
+    <Property Name="NEXTFILLING" Type="date" />
+    <Property Name="DETAIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="TCONTENT" Type="nvarchar" MaxLength="50" />
+    <Property Name="TPERIOD" Type="int" />
+    <Property Name="INFO" Type="int" />
+    <Property Name="TSTATUS" Type="int" />
+    <Property Name="CARE" Type="int" />
+    <Property Name="FILL" Type="int" />
+    <Property Name="CAPACITY" Type="nvarchar" MaxLength="50" />
+    <Property Name="FILLDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="REFID" />
+    </Key>
+    <Property Name="REFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COMPANYID" Type="int" Nullable="false" />
+    <Property Name="USERNAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="USERTYPE" Type="int" />
+  </EntityType>
+  <Function Name="sp_carereport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_cmanoreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_cmemreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_cpressreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_datediff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_datemonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_datenow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_dateyear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_fillreport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="FireLowDBModel2StoreContainer">
+    <EntitySet Name="CHECKLIST" EntityType="Self.CHECKLIST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
